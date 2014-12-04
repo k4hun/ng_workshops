@@ -6,14 +6,21 @@
         - product.errors.full_messages.each do |msg|
           %li= msg
 
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form-control'
-  .form-group
-    = f.label :description
-    = f.text_area :description, class: 'form-control'
-  .form-group
-    = f.label :price
-    = f.text_field :price, class: 'form-control'
 
-  = f.submit 'Save', class: 'btn btn-default'
+  .form-horizontal
+    .form-group
+      = f.label :title, class: 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :title, class: 'form-control'
+
+    .form-group
+      = f.label :description, class: 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_area :description, class: 'form-control'
+
+    .form-group
+      = f.label :price, class: 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :price, class: 'form-control'
+  .col-sm-10.text-center
+    = f.submit 'Save', class: 'btn btn-default'

@@ -1,17 +1,28 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = category.name
+  %h1
+    = category.name
 
 %p
-  - category.products.each do |product|
-    = product.title
+  %h2= 'Products in this category:'
+  %h3    
+    - category.products.each do |product|
+      = product.title
+      - if current_user == product.user
+        = link_to 'Edit', edit_category_product_path(category.id, product.id)
+      %br
+
 
 %p
-  %h3 New product
+%hr
+
+
+- if user_signed_in?
+  %h4 Add new product:
   = render 'products/form'
-
-= link_to 'Edit', edit_category_path(category)
-\|
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+%br
+%br
+  = link_to 'Edit', edit_category_path(category), class: 'btn btn-info'
+  \|
+  = link_to 'Back', categories_path, class: 'btn btn-primary'

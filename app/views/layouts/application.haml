@@ -11,11 +11,28 @@
   %body
     %nav.navbar.navbar-default
       .container-fluid
-        .navbar-header
+        .navbar-header          
           %span.navbar-brand #{AppConfig.workshops_name}
+
+        %p.navbar-text.navbar-center  
+          %i.glyphicon.glyphicon-home                 
+          = link_to 'Home', root_url 
+          %i.glyphicon.glyphicon-wrench
+          = link_to 'Products', category_products_path(1)
+
         %p.navbar-text.navbar-right
-          Links should go here
+          - if user_signed_in?
+            = current_user.email
+            = link_to('Log out', destroy_user_session_path, :method => :delete)
+          - else
+            = link_to('Log in', new_user_session_path)
+            = 'or'
+            = link_to('Sign up', new_user_registration_path)
+          
     .container-fluid
       .row
-        .col-lg-12
+        .col-lg-8
+          .notice 
+            = #flash[:error]
+            = #flash[:notice]
           = yield

@@ -6,8 +6,9 @@
         - category.errors.full_messages.each do |msg|
           %li= msg
 
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
-
-  = f.submit 'Save', class: 'btn btn-default'
+  .form-horizontal
+    .form-group
+      = f.label :name, class: 'col-sm-1 control-label'
+      .col-sm-8
+        = f.text_field :name, class: 'form-control'
+      = f.submit 'Save', class: 'btn btn-default'

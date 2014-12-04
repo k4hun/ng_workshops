@@ -1,4 +1,8 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
+%blockquote.blockquote-reverse
+  = review.content
+
+  %footer
+    = "Rating: " 
+    = review.rating
+    = " Author: "
+    %em= review.author
