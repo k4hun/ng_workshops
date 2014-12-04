@@ -5,7 +5,7 @@ class ReviewDecorator < Draper::Decorator
 
 
   def author 
-	author = review.user.firstname
+	author = review.user.firstname + ' ' + review.user.lastname
   end
 
 end

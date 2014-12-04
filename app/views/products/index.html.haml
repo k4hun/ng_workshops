@@ -13,7 +13,7 @@
     %tr
       %td= lp
       %td= product.title
-      %td= product.description
+      %td= truncate(product.description, length: 80)
       %td= product.price
       %td= product.category.name
       %td

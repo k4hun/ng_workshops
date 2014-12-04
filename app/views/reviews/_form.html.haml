@@ -5,10 +5,29 @@
       %ul
         - review.errors.full_messages.each do |msg|
           %li= msg
-  .form-group
-    = f.label :content
-    = f.text_area :content, class: 'form-control'
-  .form-group
-    = f.input :rating, collection: 1..5, class: 'form-control'
 
-  = f.submit 'Save', class: 'btn btn-default'
+  .form-horizontal.col-sm-10
+    .form-group
+      = f.label :content ,class: 'col-sm-1 control-label'
+      .col-sm-8
+        = f.text_area :content, class: 'form-control'
+    .form-group
+      = f.label :rating ,class: 'col-sm-1 control-label'
+      .col-sm-8.text-center
+        = f.label "1"
+        = f.radio_button :rating, 1 , checked: true
+
+        = f.label "2"
+        = f.radio_button :rating, 2
+
+        = f.label "3"
+        = f.radio_button :rating, 3
+
+        = f.label "4"
+        = f.radio_button :rating, 4
+
+        = f.label "5"
+        = f.radio_button :rating, 5
+  
+  .col-sm-8.text-center
+    = f.submit 'Save', class: 'btn btn-default'

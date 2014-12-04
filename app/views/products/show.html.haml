@@ -3,30 +3,40 @@
 
 %p
   %h2
-    = 'Product title:'
     = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
 
-%p
-  %b Category
-  = product.category.name
+.col-sm-12
+  .col-sm-10
+    %b Description:
+    = product.description
 
-%hr
+  .col-sm-2
+    %h2
+      %b Price:
+      = product.price
+    %br
+    %b Category
+    = product.category.name
 
-- if user_signed_in?
-  %h4 Add review:
-  = render 'reviews/form'
+
+
+
+.col-sm-12
   %hr
+  - if user_signed_in?
+    %h4 Add review:
 
-%p
-  %b Reviews:
-= render reviews
+    .col-sm-12
+      = render 'reviews/form'
+    %br
+    %br
 
-= link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-info'
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+    = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-info'
+    \|
+  = link_to 'Back', category_products_path, class: 'btn btn-primary'
+
+.col-sm-12
+  %hr
+    %h1= 'Reviews:'
+  = render reviews
+

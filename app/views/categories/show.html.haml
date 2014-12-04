@@ -8,7 +8,7 @@
   %h2= 'Products in this category:'
   %h3    
     - category.products.each do |product|
-      = product.title
+      = link_to product.title, category_product_path(product.category, product)
       - if current_user == product.user
         = link_to 'Edit', edit_category_product_path(category.id, product.id)
       %br
@@ -21,8 +21,8 @@
 - if user_signed_in?
   %h4 Add new product:
   = render 'products/form'
-%br
-%br
+  %br
+  %br
   = link_to 'Edit', edit_category_path(category), class: 'btn btn-info'
   \|
-  = link_to 'Back', categories_path, class: 'btn btn-primary'
+= link_to 'Back', categories_path, class: 'btn btn-primary'
