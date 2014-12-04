@@ -1,0 +1,32 @@
+.col-sm-10    
+  %h1
+    %em= user.firstname + ' ' + user.lastname
+
+  .col-sm-3
+    = image_tag('default-user-icon-profile.png')
+  
+  .col-sm-7
+    %h3
+      = "Email:"
+      = user.email
+    %h3
+      = 'Reviews:'
+      = user.reviews.count
+    %h4 
+      = 'Last online:'
+      = user.current_sign_in_at.strftime("%d/%m/%Y")
+
+
+  .col-sm-10
+    %hr
+
+    %h4
+      = 'Last 5 reviews:'
+    - user.reviews.sort_by{|t| - t.created_at.to_i}.first(5).each do |review|    
+      = 'Rated:'
+      = review.rating
+      %br
+      = "Added:"
+      = review.created_at.strftime("%d/%m/%Y")
+      %blockquote= review.content
+      %hr
