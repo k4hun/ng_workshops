@@ -6,11 +6,13 @@
 
 %p
   %h2= 'Products in this category:'
-  %h3    
+  %h4
+    %ul   
     - category.products.each do |product|
-      = link_to product.title, category_product_path(product.category, product)
-      - if current_user == product.user
-        = link_to 'Edit', edit_category_product_path(category.id, product.id)
+      %li
+        = link_to product.title, category_product_path(product.category, product), class: 'bg-info'
+        - if current_user == product.user
+          = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-info btn-xs'
       %br
 
 

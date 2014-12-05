@@ -12,18 +12,20 @@
     %h3
       = 'Reviews:'
       = user.reviews.count
-    %h4 
-      = 'Last online:'
-      = user.current_sign_in_at.strftime("%d/%m/%Y")
+    -if user.current_sign_in_at != nil
+      %h4 
+        = 'Last online:'
+        = user.current_sign_in_at.strftime("%d/%m/%Y")
 
 
   .col-sm-10
     %hr
 
     %h4
-      = 'Last 5 reviews:'
-    - user.reviews.sort_by{|t| - t.created_at.to_i}.first(5).each do |review|    
-      = 'Rated:'
+      = 'Recent reviews:'
+    - user.reviews.sort_by{|t| - t.created_at.to_i}.first(5).each do |review|   
+      = review.product.title + "," 
+      = 'rated:'
       = review.rating
       %br
       = "Added:"

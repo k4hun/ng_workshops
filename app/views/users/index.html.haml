@@ -1,20 +1,24 @@
 %h1 All users
 
-.col-sm-10
-  %table.table.table-striped
-    %tr.info
-      %th #
-      %th Email
-      %th Name
-      %th Reviews
-      %th Show Page
+- if users.count == 0
+  %h2 There are currently no users
+- else
   
-  
-    - @users.each do |user|
-      %tr
-        %td= '#'
-        %td= user.email
-        %td= user.firstname + ' ' + user.lastname
-        %td= user.reviews.count
-        %td= link_to "Show", user, class: 'btn btn-info'
+  .col-sm-10
+    %table.table.table-striped
+      %tr.info
+        %th #
+        %th Email
+        %th Name
+        %th Reviews
+        %th Show Page
+    
+    
+      - @users.each do |user|
+        %tr
+          %td= '#'
+          %td= user.email
+          %td= user.firstname + ' ' + user.lastname
+          %td= user.reviews.count
+          %td= link_to "Show", user, class: 'btn btn-info'
 
