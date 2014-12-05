@@ -1,26 +1,30 @@
 %h1 Listing categories
 
-%table.table.table-striped
-  %tr.info
-    %th #
-    %th Name
-    %th Action
-  -lp = 1
-  - categories.each do |category|
-    %tr
-      %td= lp
-      %td= category.name
-      %td
-        = link_to 'Show', category, class: 'btn btn-default'
-        - if user_signed_in?
-          - if current_user.admin?
-            = link_to 'Edit', edit_category_path(category), class: "btn btn-info"
-            = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
-    - lp += 1
+- if categories.count == 0
+  %h2 There are currently no categories
+- else
 
-
-%br
-- if user_signed_in?
-  - if current_user.admin?
-    .actions
-      = link_to 'New Category', new_category_path, class: "btn btn-lg btn-primary"
+  %table.table.table-striped
+    %tr.info
+      %th #
+      %th Name
+      %th Action
+    -lp = 1
+    - categories.each do |category|
+      %tr
+        %td= lp
+        %td= category.name
+        %td
+          = link_to 'Show', category, class: 'btn btn-default'
+          - if user_signed_in?
+            - if current_user.admin?
+              = link_to 'Edit', edit_category_path(category), class: "btn btn-info"
+              = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+      - lp += 1
+  
+  
+  %br
+  - if user_signed_in?
+    - if current_user.admin?
+      .actions
+        = link_to 'New Category', new_category_path, class: "btn btn-lg btn-primary"
